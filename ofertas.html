@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>👾 GAMER SHOP- Ofertas</title>
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+  <!-- Estilos personalizados -->
+  <link rel="stylesheet" href="/css/styles.css">
+  <style>
+    .body {
+      background-color: #fff;
+      color: #000;
+      font-family: 'Poppins', sans-serif;
+      padding-top: 70px;
+    }
+
+    .navbar,
+    footer {
+      background-color: #000 !important;
+    }
+
+        footer {
+      color: #fff;
+    }
+
+    footer a {
+      color: #ccc;
+      margin: 0 10px;
+    }
+
+    footer a:hover {
+      color: #fff;
+    }
+    .navbar-brand,
+    .nav-link {
+      color: #ccc !important;
+    }
+
+    .nav-link:hover {
+      color: #fff !important;
+    }
+
+    .carousel-inner img {
+      height: 400px;
+      object-fit: cover;
+    }
+
+    .card {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      color: #000;
+    }
+
+    .card .btn {
+      background-color: #050505;
+      color: white;
+    }
+
+    .precio {
+      color: green;
+      font-weight: bold;
+    }
+
+    .mensaje {
+      margin-top: 10px;
+      color: green;
+    }
+
+    footer a {
+      color: #ccc;
+      margin: 0 10px;
+    }
+
+    footer a:hover {
+      color: #fff;
+    }
+
+    .social-icons a {
+      margin: 0 10px;
+      display: inline-block;
+    }
+
+    .social-icons img {
+      width: 30px;
+    }
+
+    .navbar {
+      border-bottom: 3px solid black;
+    }
+
+    /* Tamaño de las imagenes */
+
+    .card-img-top {
+    height: 175px; 
+    width: auto;
+    object-fit: cover; 
+   }
+
+  </style>
+</head>
+
+<body class="body">
+
+  <!--------------MUISCA DE FONDO------------------>
+    <script src="/js/scrip.js" defer></script>
+    
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/inicio.html">GamerShop 👾</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuNavegacion">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="menuNavegacion" >
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="inicio.html">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link" href="productos.html">Productos</a></li>
+          <li class="nav-item"><a class="nav-link" href="ofertas.html">Ofertas</a></li>
+          <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
+          <li class="nav-item"><a class="nav-link" href="sobre_nosotros.html">Sobre Nosotros</a></li>
+          <li class="nav-item"><a class="nav-link" href="Blog.html">Blog</a></li>
+          <li class="nav-item"><a class="nav-link" href="imagenes.html">Galeria</a></li>
+          <li class="nav-item"><a class="nav-link" href="Privacidad.html">Privacidad</a></li>
+          <li class="nav-item ms-3 d-flex align-items-center">
+            <button id="music-toggle-btn" style="background:none;border:none;padding:0;">
+              <img id="music-toggle" src="/img/play.png" alt="Play/Pause" style="width:30px;cursor:pointer;">
+            </button>
+            <audio id="bg-music" src="/sonidos/forca.mp3" loop muted></audio>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Buscador -->
+  <div class="container mt-3">
+    <div class="input-group">
+      <input type="text" id="buscador" class="form-control" placeholder="Buscar productos..." onkeyup="filtrarProductos()">
+      <span class="input-group-text"><i class="bi bi-search"></i></span>
+    </div>
+  </div>
+
+  <!-- Ofertas -->
+  <div class="container mt-5">
+    <h1 class="text-center">OFERTAS GAMER SHOP</h1>
+    <div class="row g-4 mt-3" id="ofertas"></div>
+
+    <!-- Carrito y botones -->
+    <div class="mt-4">
+      <h5>🛒 Carrito de Compras</h5>
+      <ul id="listaCarrito" class="list-group"></ul>
+      <a href="carrito.html" class="btn btn-warning mt-2">Ver Carrito</a>
+      <button type="button" class="btn btn-outline-danger" onclick="guardarProducto()">Guardar</button>
+      <button onclick="enviarCarrito()" class="btn btn-outline-success">Enviar</button>
+      <div class="mensaje" id="mensajeForm"></div>
+    </div>
+
+    <div class="text-center mt-4">
+      <a href="ofertas2.html" class="btn btn-danger">Ver más ofertas</a>
+    </div>
+  </div>
+
+  <!-- Script -->
+  <script>
+    const productos = [
+      { nombre: 'Teclado RGB', precio: '$29.99', img: '/img/teclado rgb.jpg' },
+      { nombre: 'Mouse Pro', precio: '$19.99', img: '/img/mause pro.webp' },
+      { nombre: 'Audífonos 7.1', precio: '$39.99', img: '/img/audifono7.1.jpg' },
+      { nombre: 'Monitor 24"', precio: '$109.99', img: '/img/monitor 24.jpg' },
+      { nombre: 'Silla Gamer', precio: '$159.99', img: '/img/silla gamer.jpg' },
+      { nombre: 'Combo Gamer', precio: '$99.99', img: '/img/combo gamer.jpg' },
+    ];
+
+    const carrito = [];
+    const listaCarrito = document.getElementById('listaCarrito');
+    const contenedor = document.getElementById('ofertas');
+
+    productos.forEach(producto => {
+      const div = document.createElement('div');
+      div.className = 'col-md-4';
+      div.innerHTML = `
+        <div class="card h-100 text-center">
+          <img src="${producto.img}" class="card-img-top" alt="${producto.nombre}">
+          <div class="card-body">
+            <h5 class="card-title">${producto.nombre}</h5>
+            <p class="card-text precio">Precio: ${producto.precio}</p>
+            <button onclick="agregarAlCarrito('${producto.nombre}', '${producto.precio}')" class="btn w-100">Agregar al carrito</button>
+          </div>
+        </div>
+      `;
+      contenedor.appendChild(div);
+    });
+
+    function agregarAlCarrito(nombre, precio) {
+      carrito.push({ nombre, precio });
+      actualizarListaCarrito();
+      mostrarMensaje(`"${nombre}" agregado al carrito.`);
+    }
+
+    function guardarProducto() {
+      mostrarMensaje("Producto guardado.");
+    }
+
+    function enviarCarrito() {
+      if (carrito.length > 0) {
+        localStorage.setItem('carrito', JSON.stringify(carrito));
+        window.location.href = 'carrito.html';
+      } else {
+        mostrarMensaje("No hay productos en el carrito.");
+      }
+    }
+
+    function eliminarDelCarrito(index) {
+      carrito.splice(index, 1);
+      actualizarListaCarrito();
+      mostrarMensaje("Producto eliminado del carrito.");
+    }
+
+    function actualizarListaCarrito() {
+      listaCarrito.innerHTML = '';
+      carrito.forEach((item, index) => {
+        const li = document.createElement('li');
+        li.className = 'list-group-item d-flex justify-content-between align-items-center';
+        li.innerHTML = `
+          ${item.nombre} - ${item.precio}
+          <button class="btn btn-sm btn-danger" onclick="eliminarDelCarrito(${index})">Eliminar</button>
+        `;
+        listaCarrito.appendChild(li);
+      });
+    }
+
+    function mostrarMensaje(texto) {
+      const mensaje = document.getElementById('mensajeForm');
+      mensaje.textContent = texto;
+      setTimeout(() => mensaje.textContent = '', 4000);
+    }
+
+    function filtrarProductos() {
+      const texto = document.getElementById('buscador').value.toLowerCase();
+      const tarjetas = contenedor.querySelectorAll('.col-md-4');
+      tarjetas.forEach(tarjeta => {
+        const nombreProducto = tarjeta.querySelector('.card-title').textContent.toLowerCase();
+        tarjeta.style.display = nombreProducto.includes(texto) ? 'block' : 'none';
+      });
+    }
+  </script>
+
+
+  <!-- Footer -->
+  <footer class="mt-5 p-4 text-center">
+    <div class="container">
+      <p>&copy; 2025 GamerShop - Todos los derechos reservados</p>
+      <div class="social-icons">
+        <a href="https://www.facebook.com/share/1BiANn9mn8/"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook"></a>
+        <a href="https://www.instagram.com/gam.ershop1?igsh=MWJycm5zenNtMG10OQ=="><img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram"></a>
+        <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="Twitter"></a>
+        <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp"></a>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

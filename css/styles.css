@@ -1,0 +1,86 @@
+/* Aqui inicia CSS de home (Marcelo) */
+
+/* Estilo general para el cuerpo de la página */
+.body_marce {
+    font-family: Arial, sans-serif;
+    box-sizing: border-box;
+    background-image: url(https://cdn.dribbble.com/userupload/21702197/file/original-d1ee8961791e152da459c485c9cdfe3b.gif);
+    background-repeat: no-repeat;
+    background-size: 2000px;
+    background-position: center;
+}
+
+/* Estilo del contenido principal */
+.contenido-principal {
+    padding: 30px;
+    background-color: rgba(253, 253, 253);
+    max-width: 1000px;
+    margin: 20px auto;
+    box-shadow: 5px 5px 100px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;   
+}
+
+/* Estilo para la sección de bienvenida */
+.seccion-bienvenida h1 {
+    color: blueviolet;
+    font-weight: bold;
+}
+
+.seccion-bienvenida p {
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+/* Estilo para la sección de juegos */
+.seccion-juegos h2 {
+    text-align: center;
+    margin-top: 40px;
+    color: darkblue;
+}
+
+/* Galería de juegos */
+.galeria-juegos {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+/* Cada juego */
+.juego {
+    margin: 30px;
+    width: 250px;
+}
+
+.juego img {
+    width: 255px;
+    height: 175px;
+    border-radius: 10px;
+    
+}
+
+.juego h3 {
+    margin-top: 10px;
+}
+
+/* Estilo del pie de página */
+.pie-pagina_inicio {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    margin-top: 40px;
+}
+
+
+/* Aqui termina CSS de home */
+
+
+
+
+   
+    
+
+
+
+

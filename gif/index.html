@@ -1,0 +1,78 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fantasma que sigue el cursor</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      cursor: default; /* Muestra el cursor normal */
+      background-color: #111;
+    }
+
+    #ghost {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 40px; /* Tamaño pequeño para que no sea llamativo */
+      height: 40px;
+      pointer-events: none;
+      opacity: 1.06; /* Más sutil */
+      filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.5)); /* Sombra para que no se vea flotando plano */
+      transition: transform 0.1s linear;
+    }
+  </style>
+</head>
+<body>
+  <!-- Imagen del fantasma -->
+  <img id="ghost" src="img/ghost-right.gif" alt="Fantasma" />
+
+  <script>
+    const ghost = document.getElementById("ghost");
+
+    // Posiciones actuales
+    let ghostX = window.innerWidth / 2;
+    let ghostY = window.innerHeight / 2;
+
+    // Última posición del mouse
+    let lastX = ghostX;
+    let lastY = ghostY;
+
+    // Movimiento animado
+    function animate() {
+      ghostX += (lastX - ghostX) * 0.05;
+      ghostY += (lastY - ghostY) * 0.05;
+
+      ghost.style.left = ghostX + "px";
+      ghost.style.top = ghostY + "px";
+
+      requestAnimationFrame(animate);
+    }
+
+    // Detección de dirección del mouse y cambio de imagen
+    document.addEventListener("mousemove", (e) => {
+      const dx = e.clientX - lastX;
+      const dy = e.clientY - lastY;
+      lastX = e.clientX;
+      lastY = e.clientY;
+
+      // Cambia la imagen dependiendo de la dirección
+      if (Math.abs(dx) > Math.abs(dy)) {
+        ghost.src = dx > 0 ? "img/ghost-right.gif" : "img/ghost-left.gif";
+      } else {
+        ghost.src = dy > 0 ? "img/ghost-down.gif" : "img/ghost-up.gif";
+      }
+
+      // Si el mouse se mueve muy rápido, se vuelve "alocado"
+      if (Math.abs(dx) + Math.abs(dy) > 80) {
+        ghost.src = "img/ghost-crazy.gif";
+      }
+    });
+
+    animate();
+  </script>
+</body>
+</html>

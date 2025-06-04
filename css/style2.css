@@ -1,0 +1,124 @@
+.header2{
+    background:url(https://media-hosting.imagekit.io/adfe633e6dc6447f/portada.jpg?Expires=1841370636&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=uCfruuLXZJL-~EsS1ClUMxI1aXhUEd2nMy~oFytS6AQc3kj9R9Dwdg~~cjg1lbvgSAfkvrFPXy0SuRbPOL~Li1~y-gJJinNxkaW41VSc03C1xWJD5UjmrZ5oq4zvXt8yTpnuKNWxLJz9VRhMeG12g5K-xlqLLOiWGwqddEhDpYMeW-K~FQLJ1Zqgelvf4Zs4Nm78Xgnle2kMuQDPvsmEqHX2Bn-6vbGDWQ31K1~bLxgPV2zecnfI7hZV477oUH6TM~4kptYk3R98hgHbHpID2iSzVO-bbSaRclCvlC0zPxjg8QUxxXdSWAKzOTezkpscP98BmOWucuD4eF6aLVVMmg__);
+    background-size: cover;
+    color: black;
+    padding: 20px;
+    text-align: center;
+    height: 300px;
+    }
+
+    .general{
+        position: absolute;
+        display: flex;
+        width: 1400px;
+        height: 300px;
+        background-color: cadetblue;
+    }
+
+     
+    h1{
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    .imagenes{
+        margin-top: 10px;
+       width: 200px;
+       height: 200px;
+       margin-left: 30px;
+       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+        border-radius: 12px;
+        
+    }
+
+    p{
+        text-align: center;
+    }
+
+    .contenido{
+        padding: 30px;
+        background-color: #fdfdfd;
+        max-width: 1000px;
+        margin: 20px auto;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+        border-radius: 12px;
+    }
+
+    .separaciones{
+        margin-top: 25px;
+        
+    }
+    
+
+    h3{
+        text-align: center;
+        margin-top: 10px;
+        padding-left: 30px;
+    }
+
+
+    .imagenes2{
+         margin-top: 10px;
+       width: 220px;
+       height: 200px;
+       margin-left: 15px;
+       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+        border-radius: 12px;
+    }
+
+    .pie-pagina {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    margin-top: 40px;
+}
+
+.redes-sociales{
+    margin-top: 15px;
+
+}
+
+.redes-sociales a{
+    margin: 0 8px;
+    display: inline-block;
+    transition: transform 0.3s;
+}
+
+.redes-sociales a:hover {
+    transform: scale(1.2);
+}
+
+.redes-sociales img {
+    width: 30px;
+    height:30px;
+}
+
+.imagenes3:hover{
+    transform: scale(1.2);
+
+}
+
+.swiper{
+    margin-top: 40px;
+}
+
+.swiper-slide{
+    
+    position: relative;
+}
+
+
+@media (max-width:991px) {
+    .swiper {
+    padding: 0 70px;
+}
+
+.swiper-slide img {
+width: 100%;
+}
+}
+
+header{
+    position: sticky;
+}

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>👾 GAMER SHOP - Carrito de Compras</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    body {
+      padding: 20px;
+      background-color: #f7f7f7;
+    }
+
+    table { 
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    th, td {
+      border: 1px solid #f1f1f1;
+      text-align: center;
+      padding: 10px;
+    }
+
+    .titulo-carrito {
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    .table-dark th {
+      background-color: #1f1f1f !important;
+      color: rgb(241, 239, 79);
+    }
+
+    #mensajeCompra {
+      color: green;
+      font-weight: bold;
+      margin-top: 15px;
+    }
+
+    .total-pagar {
+      font-weight: bold;
+      color: darkblue;
+      margin-top: 10px;
+    }
+    footer a:hover {
+      color: #fff;
+    }
+
+    .social-icons a {
+      margin: 0 10px;
+      display: inline-block;
+    }
+
+    .social-icons img {
+      width: 30px;
+    }
+
+
+    .navbar {
+  border-bottom: 3px solid black;
+  position: sticky;
+  top: 0
+}
+  </style>
+
+</head>
+
+<body>
+
+  
+
+  <div class="container">
+    <h1 class="mb-4">🛒 El Carrito</h1>
+    <table class="table">
+      <thead>
+        <tr class="table-dark">
+          <th style=" color: gray;">Producto</th>
+          <th style=" color: green;">Precio</th>
+        </tr>
+      </thead>
+      <tbody id="tablaCarrito"></tbody>
+    </table>
+
+    <div id="total" class="total-pagar"></div>
+
+    <button class="btn btn-success mt-3" onclick="comprar()">Comprar</button>
+    <div id="mensajeCompra"></div>
+
+    <a href="ofertas.html" class="btn btn-secondary mt-3">Volver a Ofertas</a>
+  </div>
+
+  <script>
+    const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+    const tabla = document.getElementById('tablaCarrito');
+    let total = 0;
+
+    carrito.forEach(producto => {
+      const precioNumerico = parseFloat(producto.precio.replace('$', ''));
+      total += precioNumerico;
+
+      const fila = document.createElement('tr');
+      fila.innerHTML = `<td>${producto.nombre}</td><td>${producto.precio}</td>`;
+      tabla.appendChild(fila);
+    });
+
+    document.getElementById('total').textContent = `Total a pagar: $${total.toFixed(2)}`;
+
+    function comprar() {
+      if (carrito.length === 0) {
+        document.getElementById('mensajeCompra').textContent = 'No hay productos en el carrito.';
+        return;
+      }
+      document.getElementById('mensajeCompra').textContent = ` Tu compra ha sido enviada. Total apagar: $${total.toFixed(2)}.`;
+      localStorage.removeItem('carrito');
+    }
+  </script>
+</body>
+ <!-- Footer -->
+  <footer class="mt-5 p-4 text-center">
+    <div class="container">
+      <p>&copy; 2025 GamerShop - Todos los derechos reservados</p>
+      <div class="social-icons">
+        <a href="https://www.facebook.com/share/1BiANn9mn8/"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook"></a>
+        <a href="https://www.instagram.com/gam.ershop1?igsh=MWJycm5zenNtMG10OQ=="><img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram"></a>
+        <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="Twitter"></a>
+        <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp"></a>
+      </div>
+    
+    </div>
+  </footer>
+</html>
